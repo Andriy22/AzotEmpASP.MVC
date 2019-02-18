@@ -1,0 +1,49 @@
+﻿@model IEnumerable<PrioritiesAndTasksModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<br />
+<a href="~/Home/Create" class="col s6 offset-s3 btn red pulse" style="text-align:center">CREATE NEW TASK</a>
+<br />
+<div class="col s6 offset-s3" style="text-align:center"><h2>TASKS TABLE</h2></div>
+
+<table class="centered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>IsCompleted</th>
+            <th>Priority</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @{
+            int counter = 0;
+            foreach (PrioritiesAndTasksModel p in Model)
+            {
+                counter++;
+        <tr>
+            <td>@counter</td>
+            <td>@p.task.Name</td>
+            <td>@p.task.Date</td>
+            <td>@p.task.Status</td>
+          
+            <td>@p.priority.Name</td>
+        </tr>
+            }
+        }
+
+
+    </tbody>
+
+
+</table>
+<div id="result">
+
+</div>
+

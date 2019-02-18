@@ -1,0 +1,43 @@
+﻿@model PriorityAndTaskModel
+@{
+    /**/
+
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+    <div class="col s6 offset-s3 center"><h2>NEW TASK</h2></div>
+<div class="input-field col s12">
+    @Html.TextBoxFor(Model => Model.task.Name, new { id = "Name" })
+    <label for="Name">Name</label>
+</div>
+<div class="input-field col s12">
+    @Html.TextBoxFor(Model => Model.task.Date, new { @class = "datepicker", @type = "text" })
+    <label for="Date">Date</label>
+</div>
+
+<div class="input-field col s12">
+    @Html.DropDownListFor(Model => Model.task.Priority_ID, new SelectList(Model.SelectListItems, "Value", "Text"), "-Select Priority-")
+</div>
+<p>
+    <label>
+        @*<input type="checkbox" value="@Model.task.Status" name="task.Status">*@
+        @Html.CheckBoxFor(m => m.task.Status)
+        <span>IsCompleted</span>
+    </label>
+</p>
+<input type="submit" class="btn col s12 red pulse" value="Create" />
+}
+<script>
+    $(function () {
+        $('select').formSelect();
+        $('.datepicker').datepicker();
+        $("input[type='hidden']").each(function (index, element) {
+            $(this).appendTo($(element).parent());
+        });
+    });
+</script>
