@@ -1,6 +1,7 @@
 namespace DAL
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
 
@@ -21,10 +22,29 @@ namespace DAL
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
         // public virtual DbSet<MyEntity> MyEntities { get; set; }
-        public virtual DbSet<Tasks> Tasks { get; set; }
-        public virtual DbSet<Priority> Priorities  { get; set; }
+        public virtual DbSet<Emp> Emps { get; set; }
+        public virtual DbSet<Deportament> Deportaments  { get; set; }
     }
-
+    public class DBaseInit : DropCreateDatabaseIfModelChanges<DBase>
+    {
+        protected override void Seed(DBase context)
+        {
+            IList<Emp> emps = new List<Emp>();
+            var dep = new Deportament { Description = "Test", Name = "Test" };
+            emps.Add(new Emp
+            {
+                Age = 55,
+                Deportament = dep,
+                login = "Login",
+                password = "password",
+                Name = "Vasyan",
+                SurName = "Vasuanovich",
+                Salary = 10000
+            });
+            context.Emps.AddRange(emps);
+            context.SaveChanges();
+        }
+    }
     //public class MyEntity
     //{
     //    public int Id { get; set; }

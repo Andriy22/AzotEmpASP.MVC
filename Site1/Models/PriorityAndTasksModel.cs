@@ -9,7 +9,7 @@ namespace Site1
     public class PrioritiesAndTasksModel
     {
 
-        public Tasks task { get; set; }
-        public Priority priority { get; set; }
+        public Emp task { get; set; }
+        public Deportament priority { get; set; }
     }
 }

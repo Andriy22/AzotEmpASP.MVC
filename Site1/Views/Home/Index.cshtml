@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PrioritiesAndTasksModel>
+﻿@model IEnumerable<IndexModel>
 @{
     ViewBag.Title = "Home Page";
 }
@@ -14,9 +14,12 @@
         <tr>
             <th>#</th>
             <th>Name</th>
-            <th>Date</th>
-            <th>IsCompleted</th>
-            <th>Priority</th>
+            <th>SurName</th>
+            <th>Age</th>
+            <th>Salary</th>
+            <th>DEP_NAME</th>
+            <th>DEP_DESC</th>
+
         </tr>
     </thead>
 
@@ -24,16 +27,17 @@
 
         @{
             int counter = 0;
-            foreach (PrioritiesAndTasksModel p in Model)
+            foreach (IndexModel p in Model)
             {
                 counter++;
         <tr>
             <td>@counter</td>
-            <td>@p.task.Name</td>
-            <td>@p.task.Date</td>
-            <td>@p.task.Status</td>
-          
-            <td>@p.priority.Name</td>
+            <td>@p.Name</td>
+            <td>@p.SurName</td>
+            <td>@p.Age</td>
+            <td>@p.Salary грн.</td>
+            <td>@p.Deportament_name</td>
+            <td>@p.Deportament_desc</td>
         </tr>
             }
         }

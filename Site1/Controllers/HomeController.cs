@@ -11,30 +11,24 @@ namespace Site1.Controllers
         DAL.DBase ctx = new DAL.DBase();
         public ActionResult Index()
         {
-            
-            List<PrioritiesAndTasksModel> model = new List<PrioritiesAndTasksModel>();
+            ICollection<IndexModel> model = new List<IndexModel>();
 
-            if (ctx.Tasks.Count() != 0)
-            {
-                foreach (var el in ctx.Tasks)
+            foreach (var el in ctx.Emps)
+                model.Add(new IndexModel
                 {
-
-                    model.Add(new PrioritiesAndTasksModel() { task = el, priority = ctx.Priorities.FirstOrDefault(x => x.ID == el.Priority_ID) });
-                }
-            }
+                    Age = el.Age,
+                    Deportament_desc = el.Deportament.Description,
+                    Deportament_name = el.Deportament.Name,
+                    Name = el.Name,
+                    Salary = el.Salary,
+                    SurName = el.SurName
+                });
             return View(model);
+
         }
         public ActionResult Create()
         {
-            List<SelectListItem> items = new List<SelectListItem>();
-            foreach (var el in ctx.Priorities)
-                items.Add(new SelectListItem { Value = el.ID.ToString(), Text = el.Name });
-            PriorityAndTaskModel priorityAndTasksModel = new PriorityAndTaskModel()
-            {
-                SelectListItems = items,
-                task = new Tasks() { Status = true }
-            };
-            return View(priorityAndTasksModel);
+            return View();
         }
 
         public ActionResult About()
@@ -51,23 +45,12 @@ namespace Site1.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Create(PriorityAndTaskModel incomingData)
-        {
-            int priority = incomingData.task.Priority_ID;
-            if (priority == 0)
-                priority++;
-            ctx.Tasks.Add(new Tasks()
-            {
-                Date = incomingData.task.Date,
-                Name = incomingData.task.Name,
-                Priority_ID = priority,
-                Status = incomingData.task.Status
-            });
-            ctx.SaveChanges();
-
-            return Redirect("/");
-        }
+        //[HttpPost]
+        //public ActionResult Create( )
+        //{
+        //    return View();
+         
+        //}
 
 
     }
