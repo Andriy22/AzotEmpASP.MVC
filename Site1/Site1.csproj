@@ -157,8 +157,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\PriorityAndTasksModel.cs" />
+    <Compile Include="Models\CreateModel.cs" />
     <Compile Include="Models\IndexModel.cs" />
+    <Compile Include="Models\IsUniqAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

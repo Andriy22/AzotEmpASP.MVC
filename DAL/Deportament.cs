@@ -17,5 +17,6 @@ namespace DAL
         public string Description { get; set; }
 
         virtual public ICollection<Emp> Empl { get; set; }
+      
     }
 }

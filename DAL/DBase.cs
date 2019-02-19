@@ -34,7 +34,7 @@ namespace DAL
             emps.Add(new Emp
             {
                 Age = 55,
-                Deportament = dep,
+                deportament = dep,
                 login = "Login",
                 password = "password",
                 Name = "Vasyan",

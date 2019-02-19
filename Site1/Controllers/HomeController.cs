@@ -17,8 +17,8 @@ namespace Site1.Controllers
                 model.Add(new IndexModel
                 {
                     Age = el.Age,
-                    Deportament_desc = el.Deportament.Description,
-                    Deportament_name = el.Deportament.Name,
+                    Deportament_desc = el.deportament.Description,
+                    Deportament_name = el.deportament.Name,
                     Name = el.Name,
                     Salary = el.Salary,
                     SurName = el.SurName
@@ -28,7 +28,10 @@ namespace Site1.Controllers
         }
         public ActionResult Create()
         {
-            return View();
+            CreateModel model = new CreateModel();
+            foreach (var el in ctx.Deportaments)
+                model.selectListItems.Add(new SelectListItem() { Text = el.Name, Value = el.Name });
+            return View(model);
         }
 
         public ActionResult About()
@@ -45,12 +48,28 @@ namespace Site1.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult Create( )
-        //{
-        //    return View();
-         
-        //}
+        [HttpPost]
+        public ActionResult Create(CreateModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                ctx.Emps.Add(new Emp
+                {
+                    Age = model.Age,
+                    Name = model.Name,
+                    deportament = ctx.Deportaments.FirstOrDefault(x => x.Name == model.Deportament_name),
+                    login = model.login,
+                    password = model.password,
+                    Salary = model.Salary,
+                    SurName = model.SurName
+                });
+                ctx.SaveChanges();
+                return Redirect("/");
+            }
+            else
+                return View();
+
+        }
 
 
     }

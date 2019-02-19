@@ -1,4 +1,4 @@
-﻿@model PriorityAndTaskModel
+﻿@model CreateModel
 @{
     /**/
 
@@ -10,27 +10,47 @@
 
 @using (Html.BeginForm("Create", "Home", FormMethod.Post))
 {
-    <div class="col s6 offset-s3 center"><h2>NEW TASK</h2></div>
-<div class="input-field col s12">
-    @Html.TextBoxFor(Model => Model.task.Name, new { id = "Name" })
-    <label for="Name">Name</label>
-</div>
-<div class="input-field col s12">
-    @Html.TextBoxFor(Model => Model.task.Date, new { @class = "datepicker", @type = "text" })
-    <label for="Date">Date</label>
-</div>
+    <div class="col s6 offset-s3 center"><h2>NEW EMP</h2></div>
+    <div class="input-field col s12">
+        @Html.ValidationMessageFor(Model => Model.login)
+        @Html.TextBoxFor(Model => Model.login, new { id = "Login" })
+        <label for="Login">Login</label>
 
-<div class="input-field col s12">
-    @Html.DropDownListFor(Model => Model.task.Priority_ID, new SelectList(Model.SelectListItems, "Value", "Text"), "-Select Priority-")
-</div>
-<p>
-    <label>
-        @*<input type="checkbox" value="@Model.task.Status" name="task.Status">*@
-        @Html.CheckBoxFor(m => m.task.Status)
-        <span>IsCompleted</span>
-    </label>
-</p>
-<input type="submit" class="btn col s12 red pulse" value="Create" />
+    </div>
+    <div class="input-field col s12">
+        @Html.ValidationMessageFor(Model => Model.password)
+        @Html.TextBoxFor(Model => Model.password, new { id = "Pass" })
+        <label for="Pass">Password</label>
+
+    </div>
+    <div class="input-field col s12">
+        @Html.ValidationMessageFor(Model => Model.Name)
+        @Html.TextBoxFor(Model => Model.Name, new { id = "Name" })
+        <label for="Name">Name</label>
+
+    </div>
+    <div class="input-field col s12">
+        @Html.ValidationMessageFor(Model => Model.SurName)
+        @Html.TextBoxFor(Model => Model.SurName, new { id = "Date" })
+        <label for="Date">SurName</label>
+
+    </div>
+    <div class="input-field col s12">
+        @Html.ValidationMessageFor(Model => Model.Age)
+        @Html.TextBoxFor(Model => Model.Age, new { id = "Age" })
+        <label for="Name">Age</label>
+
+    </div>
+    <div class="input-field col s12">
+        @Html.ValidationMessageFor(Model => Model.Salary)
+        @Html.TextBoxFor(Model => Model.Salary, new { id = "Salary" })
+        <label for="Name">Salary</label>
+
+    </div>
+    <div class="input-field col s12">
+     @Html.DropDownListFor(Model=>Model.selectListItems, new SelectList(Model.selectListItems, "Text", "Text"))
+    </div>
+    <input type="submit" class="btn col s12 red pulse" value="Create" />
 }
 <script>
     $(function () {

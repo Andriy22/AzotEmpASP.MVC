@@ -16,5 +16,6 @@ namespace Site1
 
         public string Deportament_name { get; set; }
         public string Deportament_desc { get; set; }
+
     }
 }
