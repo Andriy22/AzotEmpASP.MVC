@@ -51,6 +51,7 @@ namespace Site1.Controllers
         [HttpPost]
         public ActionResult Create(CreateModel model)
         {
+            model.selectListItems = null;
             if (ModelState.IsValid)
             {
                 ctx.Emps.Add(new Emp
@@ -68,7 +69,7 @@ namespace Site1.Controllers
             }
             else
                 return View();
-
+            
         }
 
 

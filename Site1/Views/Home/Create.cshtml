@@ -10,11 +10,12 @@
 
 @using (Html.BeginForm("Create", "Home", FormMethod.Post))
 {
-    <div class="col s6 offset-s3 center"><h2>NEW EMP</h2></div>
+    <div class="col s6 offset-s3 center"><h2> *Нанять работягу* </h2></div>
     <div class="input-field col s12">
         @Html.ValidationMessageFor(Model => Model.login)
         @Html.TextBoxFor(Model => Model.login, new { id = "Login" })
         <label for="Login">Login</label>
+    
 
     </div>
     <div class="input-field col s12">
@@ -39,7 +40,7 @@
         @Html.ValidationMessageFor(Model => Model.Age)
         @Html.TextBoxFor(Model => Model.Age, new { id = "Age" })
         <label for="Name">Age</label>
-
+       
     </div>
     <div class="input-field col s12">
         @Html.ValidationMessageFor(Model => Model.Salary)
@@ -48,7 +49,10 @@
 
     </div>
     <div class="input-field col s12">
-     @Html.DropDownListFor(Model=>Model.selectListItems, new SelectList(Model.selectListItems, "Text", "Text"))
+
+            Html.DropDownListFor(Model => Model.selectListItems, new SelectList(Model.selectListItems, "Text", "Text"))
+
+
     </div>
     <input type="submit" class="btn col s12 red pulse" value="Create" />
 }
