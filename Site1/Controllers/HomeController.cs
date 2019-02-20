@@ -4,15 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DAL;
+
 namespace Site1.Controllers
 {
     public class HomeController : Controller
     {
         DAL.DBase ctx = new DAL.DBase();
+       
         public ActionResult Index()
         {
             ICollection<IndexModel> model = new List<IndexModel>();
-
+            
             foreach (var el in ctx.Emps)
                 model.Add(new IndexModel
                 {
@@ -24,7 +26,7 @@ namespace Site1.Controllers
                     SurName = el.SurName
                 });
             return View(model);
-
+          
         }
         public ActionResult Create()
         {
@@ -48,12 +50,11 @@ namespace Site1.Controllers
             return View();
         }
 
+           
         [HttpPost]
         public ActionResult Create(CreateModel model)
         {
-            model.selectListItems = null;
-            if (ModelState.IsValid)
-            {
+        
                 ctx.Emps.Add(new Emp
                 {
                     Age = model.Age,
@@ -65,10 +66,11 @@ namespace Site1.Controllers
                     SurName = model.SurName
                 });
                 ctx.SaveChanges();
-                return Redirect("/");
-            }
-            else
-                return View();
+           
+
+            return Redirect("/");
+            
+       
             
         }
 

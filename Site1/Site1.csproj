@@ -159,6 +159,7 @@
     </Compile>
     <Compile Include="Models\CreateModel.cs" />
     <Compile Include="Models\IndexModel.cs" />
+    <Compile Include="Models\IsLogin.cs" />
     <Compile Include="Models\IsUniqAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
